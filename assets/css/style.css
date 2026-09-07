@@ -1,0 +1,204 @@
+:root {
+  --ink: #22252a;
+  --muted: #656d78;
+  --line: #e5e8ec;
+  --accent: #234f7d;
+  --accent-dark: #173754;
+  --soft: #f7f9fb;
+  --page: 980px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.nav-wrap,
+.page-wrap {
+  width: min(calc(100% - 40px), var(--page));
+  margin: 0 auto;
+}
+
+.nav-wrap {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: .01em;
+  font-size: 18px;
+}
+.brand:hover { text-decoration: none; }
+
+nav { display: flex; gap: 22px; }
+nav a { color: #4a5058; font-size: 14px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 225px 1fr;
+  gap: 42px;
+  align-items: center;
+  padding: 58px 0 28px;
+}
+
+.portrait-wrap { width: 225px; }
+.portrait {
+  width: 225px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 16%;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 8px 24px rgba(31, 42, 55, .10);
+}
+
+.hero-copy h1 {
+  margin: 0 0 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 5vw, 48px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.12;
+}
+.role { margin: 0 0 2px; font-size: 19px; color: #353b43; }
+.affiliation, .location { margin: 0; color: var(--muted); }
+.contact-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.content-section {
+  padding: 24px 0 29px;
+  border-top: 1px solid var(--line);
+}
+
+.content-section h2 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.content-section p { margin: 0 0 13px; }
+
+.education-line {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 18px;
+  padding: 7px 0;
+}
+.label { font-weight: 700; color: #343a42; }
+
+.news-list,
+.plain-list,
+.pub-list { margin: 0; padding-left: 22px; }
+.news-list li,
+.plain-list li,
+.pub-list li { margin: 7px 0; }
+.date {
+  display: inline-block;
+  min-width: 50px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.entry { padding: 11px 0 16px; }
+.entry + .entry { border-top: 1px dashed #e3e6ea; }
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+.entry-head h3 {
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+.entry-head span {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.meta {
+  margin-top: 3px !important;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.entry p:last-child { margin-bottom: 0; }
+
+.pub-title { font-weight: 700; }
+.venue { color: var(--muted); }
+
+.skills-grid p { margin: 7px 0; }
+.skills-grid .label { display: inline-block; min-width: 175px; }
+
+.site-footer {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  background: var(--soft);
+}
+.footer-inner {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .nav-wrap { min-height: 58px; }
+  nav { display: none; }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-top: 32px;
+  }
+  .portrait-wrap,
+  .portrait { width: 180px; }
+  .hero-copy h1 { font-size: 38px; }
+  .entry-head { display: block; }
+  .entry-head span { display: block; margin-top: 3px; }
+  .education-line { grid-template-columns: 1fr; gap: 0; }
+  .skills-grid .label { display: block; min-width: 0; }
+  .footer-inner { display: block; padding: 20px 0; }
+  .footer-inner span { display: block; }
+}
+
+@media print {
+  .site-header, .site-footer { display: none; }
+  .page-wrap { width: 100%; }
+  .hero { padding-top: 0; }
+  a { color: inherit; }
+}
